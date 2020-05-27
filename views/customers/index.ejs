@@ -1,0 +1,19 @@
+<h2>Search Customers</h2>
+<form action="/customers" method="GET">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= searchOptions.name %>"> <!-- chèn cách tìm kiếm từng giá trị vào form search -->
+    <button type="submit">Search</button>
+</form>
+<br>
+<!-- trong db có bao nhiêu trường thì phải gọi lại bao nhiêu trường(column) -->
+<!-- hiện lên tất cả thông tin của người dùng -->
+<% customers.forEach(customer => { %> 
+    <div>
+        <p>Name: <%= customer.name %></p> 
+        <p>Email: <%= customer.email %></p>
+        <p>Phone: <%= customer.phone %></p>
+        <p>Password: <%= customer.password %></p>
+        <p>----------------------------</p>
+    </div>
+<% }) %> 
+
