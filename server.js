@@ -7,6 +7,9 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
+// khai báo method để sử dụng bên routes/customers.js
+const methodOverride = require('method-override')
+
 
 
 const indexRouter = require('./routes/index')
@@ -17,6 +20,8 @@ app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
+// khai báo cho việc sử dụng chức năng update, delete
+app.use(methodOverride('_method'))
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({
     limit: '10mb',

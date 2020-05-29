@@ -22,4 +22,9 @@ const customerSchema = new mongoose.Schema({
     }
 })
 
+//thực hiện chức năng xóa mà không ảnh hưởng đến những thằng có kết nối liên quan
+// customerSchema.pre('remove', function(next) {
+
+// })
+
 module.exports = mongoose.model('Customer', customerSchema)

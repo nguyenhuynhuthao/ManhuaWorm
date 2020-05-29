@@ -13,7 +13,23 @@
         <p>Email: <%= customer.email %></p>
         <p>Phone: <%= customer.phone %></p>
         <p>Password: <%= customer.password %></p>
-        <p>----------------------------</p>
     </div>
+        <a href="/customers/<%= customer.id %>">View</a>
+        <a href="/customers/<%= customer.id %>/edit">Edit</a>
+
+        <%- include('../partials/deleteForm', 
+                    { url: `/customers/${customer.id}`}) %> 
+
+        <!-- URL của mình trong trường hợp này là khi mình thực hiện chọn khách hàng sửa/xóa 
+            và mình muốn nó được gắn thêm ID để mình sẽ lấy ID khách hàng đảm bảo rằng đây là 
+            dấu bằng ở đây ?_method=DELETE mình đi và cũng chỉ muốn thêm vào phương thức 
+            vì vậy mình sẽ nói phương thức gạch dưới sau một dấu hỏi về cơ bản là xác định 
+            tham số truy vấn và mình sẽ đặt điều này bằng để xóa => khi máy chủ của mình nhận được
+            yêu cầu này để thấy rằng đó là một requset và sẽ thực hiện nó -->
+        <!-- <form method="POST" action="/customers/<%= customer.id %>?_method=DELETE ">
+            <button type="submit">Delete</button>
+        </form> -->
+        <p>----------------------------</p>   
+   
 <% }) %> 
 
