@@ -48,15 +48,15 @@ h3 {
 }
 
 article img {
-  width: 350px;
-  height: 270px;
+  width: 450px;
+  height: 370px;
 }
 
 article {
-  width: 320px;
-  height: 320px;
+  width: 420px;
+  height: 450px;
   margin-right: 30px;
-  margin-left: 55px;
+  margin-left: 75px;
   float: left;
 }
 

@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 // khai báo method để sử dụng bên routes/customers.js
 const methodOverride = require('method-override')
 
-////////
+
 
 const indexRouter = require('./routes/index')
 const customerRouter = require('./routes/customers')
@@ -19,10 +19,6 @@ const customerRouter = require('./routes/customers')
 const swaggerJsDoc=require('swagger-jsdoc');
 const swaggerUi=require('swagger-ui-express');
 
-const customerRoutes = require("../ApiServer/routes/customers");
-
-//
-app.use("/customers", customerRoutes);
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -50,12 +46,6 @@ db.once('open', () => console.log('Connect to Mongoose'))
 app.use('/', indexRouter)
 app.use('/customers', customerRouter)
 
-//Câu lệnh cho main APIDoc hiện lên đầu tiên
-app.get("/", (req, res, next) => {
-    res.status(200).json({
-      message: "Welcome to ManhuaWorm Api Documents"
-    });
-});
 
 // viết documents
 const swaggerOptions={
@@ -73,22 +63,24 @@ const swaggerOptions={
     },
     apis: ["server.js"]
   };
-const swaggerDocs=swaggerJsDoc(swaggerOptions);
-app.use('/apidocs',swaggerUi.serve,swaggerUi.setup(swaggerDocs));
+  const swaggerDocs=swaggerJsDoc(swaggerOptions);
+  app.use('/apidocs',swaggerUi.serve,swaggerUi.setup(swaggerDocs));
+  
+  
+  
+  /**
+  * @swagger
+  * /:
+  *  get:
+  *      summary: ...
+  *      description: ...
+  *      produces:
+  *          - application/json
+  *      responses:
+  *          '200': 
+  *              description: ....
+  */
 
-//Make APIDocs for all routes
-
-/**
- * @swagger
- * /:
- *  get:
- *    tags: [/]
- *    summary: Return main page status
- *    descripion: Use to Get requesst in main-path http://localhost:8080
- *    responses:
- *      '200':
- *        description: This is an Api document for ManhuaWorm Cooking.
- */
 /**
  * @swagger
  * /customers:
