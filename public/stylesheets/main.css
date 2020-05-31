@@ -1,0 +1,232 @@
+/* nếu có css riêng thì import vô file css chính giống vậy */
+/* @import 'shared/variables.css';
+*/
+
+/* chung */
+body {
+  /* background-color:#f78da7; */
+  font-family: sans-serif;
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+  background: url('../images/anhnen.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  align-items: center;
+  background-size: cover;
+}
+
+/* trang home */
+/* .navbar-brand {
+  font-weight: bold;
+  color:red;
+  font-size: 50px;
+} */
+
+.nav-bar {
+  font-family: sans-serif;
+  font-size: 25px;
+}
+
+.nav-bar nav a {
+  font-family: sans-serif;
+  font-size: 25px;
+  color: rgb(1, 26, 245);
+  font-weight: bold;
+}
+
+.nav-bar nav a:hover {
+  color: red;
+}
+
+h3 {
+  font-weight: bold;
+  color: red;
+  font-size: 20px;
+  /* text-align: center; */
+  padding-left: 15px;
+}
+
+article img {
+  width: 350px;
+  height: 270px;
+}
+
+article {
+  width: 320px;
+  height: 320px;
+  margin-right: 30px;
+  margin-left: 55px;
+  float: left;
+}
+
+article a {
+  font-family: tahoma;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  /* display: block; */
+  line-height: 18px;
+  color: black;
+}
+
+article a:hover {
+  color: white;
+}
+
+h2 {
+  font-weight: bold;
+  color:red;
+  /* font-size: 50px; */
+  /* text-align: center; */
+  padding-left: 15px;
+}
+
+/* file form_fields */
+label {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: blue;
+  padding-left: 15px;
+}
+
+.inputname{
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+  margin-left: 40px;
+}
+
+.inputemail{
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+  margin-left: 45px;
+}
+
+.inputphone{
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+  margin-left: 38px;
+}
+
+.inputpassword{
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+  margin-left: 12px;
+}
+
+.acancel {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: rgb(45, 226, 75);
+  margin-left: 120px;
+}
+
+.acancel:hover{
+  color: pink;
+}
+
+.btnupdate {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.btnupdate:hover {
+  background-color: red;
+  color: black;
+}
+
+/* file views/customer/new.ejs */
+.aCancelNew{
+  font-family: sans-serif;
+  font-size: 20px;
+  color: rgb(45, 226, 75);
+  margin-left: 130px;
+}
+
+.aCancelNew:hover {
+  color: red;
+}
+
+.btnCreateNew {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.btnCreateNew:hover {
+  background-color: blue;
+  color: white;
+}
+
+/* file views/customer/index.ejs */
+.btnSearchIndex {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.btnSearchIndex:hover {
+  color: rgb(45, 226, 75);
+}
+
+.inputSearchIndex {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.aViewIndex {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: rgb(45, 226, 75);
+  margin-left: 15px;
+}
+
+.aViewIndex:hover {
+  color: pink;
+}
+
+.aEditIndex {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: rgb(45, 226, 75);
+}
+
+.aEditIndex:hover {
+  color: pink;
+}
+
+.btnDeleteForm {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: black;
+  margin-left: 15px;
+}
+
+.btnDeleteForm:hover {
+  background-color: red;
+  color: black;
+}
+
+/* file views/customer/show.ejs*/
+.aEditShow {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: rgb(45, 226, 75);
+  margin-left: 15px;
+}
+
+.aEditShow:hover {
+  color: pink;
+}
+
+p{
+  margin-left: 15px;
+  font-size: 20px;
+  color: blue;
+}

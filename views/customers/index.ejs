@@ -1,8 +1,8 @@
 <h2>Search Customers</h2>
 <form action="/customers" method="GET">
     <label>Name</label>
-    <input type="text" name="name" value="<%= searchOptions.name %>"> <!-- chèn cách tìm kiếm từng giá trị vào form search -->
-    <button type="submit">Search</button>
+    <input type="text" class="inputSearchIndex" name="name" value="<%= searchOptions.name %>"> <!-- chèn cách tìm kiếm từng giá trị vào form search -->
+    <button type="submit" class="btnSearchIndex">Search</button>
 </form>
 <br>
 <!-- trong db có bao nhiêu trường thì phải gọi lại bao nhiêu trường(column) -->
@@ -14,8 +14,8 @@
         <p>Phone: <%= customer.phone %></p>
         <p>Password: <%= customer.password %></p>
     </div>
-        <a href="/customers/<%= customer.id %>">View</a>
-        <a href="/customers/<%= customer.id %>/edit">Edit</a>
+        <a href="/customers/<%= customer.id %>" class="aViewIndex">View</a>
+        <a href="/customers/<%= customer.id %>/edit" class="aEditIndex">Edit</a>
 
         <%- include('../partials/deleteForm', 
                     { url: `/customers/${customer.id}`}) %> 

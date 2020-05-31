@@ -3,7 +3,7 @@
 <form action="/customers/<%= customer.id %>?_method=PUT" method="POST">
     
     <%- include('_form_fields') %> 
-    <a href="/customers/">Cancel</a> <!-- tìm kiếm thêm id <%= customer.id %> nếu bấm Cancel thì hệ thống sẽ quay lại trang hiển thị khách hàng -->
-    <button type="submit">Update</button> <!-- tiếng hành tạo mới khách hàng -->
+    <a href="/customers/" class="acancel">Cancel</a> <!-- tìm kiếm thêm id <%= customer.id %> nếu bấm Cancel thì hệ thống sẽ quay lại trang hiển thị khách hàng -->
+    <button type="submit" class="btnupdate">Update</button> <!-- tiếng hành tạo mới khách hàng -->
 
 </form>

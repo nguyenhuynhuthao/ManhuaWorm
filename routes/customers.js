@@ -151,4 +151,11 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+// thực hiện chức năng login
+// router.get('/login', (req, res) => {
+//     res.redirect('customers/login')
+// })
+
+
+
 module.exports = router

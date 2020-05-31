@@ -1,9 +1,10 @@
 <!-- show ra thông tin của khách hàng, khách hàng có thể chỉnh sửa trên đây -->
+<h3>View Customer</h3>
 <p>Name: <%= customer.name %></p> 
 <p>Email: <%= customer.email %></p>
 <p>Phone: <%= customer.phone %></p>
 <p>Password: <%= customer.password %></p>
-<a href="/customers/<%= customer.id %>/edit">Edit</a>
+<a href="/customers/<%= customer.id %>/edit" class="aEditShow">Edit</a>
 <!-- chức năng xóa, nhưng mình k cấp quyền khi khách hàng tự xóa tài khoản của mình -->
 <!-- <%- include('../partials/deleteForm', 
             {url: `/customer/${customer.id}`}) %>  -->
