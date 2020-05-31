@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 // khai báo method để sử dụng bên routes/customers.js
 const methodOverride = require('method-override')
 
-
+////////
 
 const indexRouter = require('./routes/index')
 const customerRouter = require('./routes/customers')
@@ -19,6 +19,10 @@ const customerRouter = require('./routes/customers')
 const swaggerJsDoc=require('swagger-jsdoc');
 const swaggerUi=require('swagger-ui-express');
 
+const customerRoutes = require("../ApiServer/routes/customers");
+
+//
+app.use("/customers", customerRoutes);
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -46,6 +50,12 @@ db.once('open', () => console.log('Connect to Mongoose'))
 app.use('/', indexRouter)
 app.use('/customers', customerRouter)
 
+//Câu lệnh cho main APIDoc hiện lên đầu tiên
+app.get("/", (req, res, next) => {
+    res.status(200).json({
+      message: "Welcome to ManhuaWorm Api Documents"
+    });
+});
 
 // viết documents
 const swaggerOptions={
@@ -61,26 +71,96 @@ const swaggerOptions={
             servers: ["localhost:8080"]
         }
     },
-    apis: ["app.js"]
+    apis: ["server.js"]
   };
-  const swaggerDocs=swaggerJsDoc(swaggerOptions);
-  app.use('/apidocs',swaggerUi.serve,swaggerUi.setup(swaggerDocs));
-  
-  
-  
-  /**
-  * @swagger
-  * /:
-  *  get:
-  *      summary: ...
-  *      description: ...
-  *      produces:
-  *          - application/json
-  *      responses:
-  *          '200': 
-  *              description: ....
-  */
+const swaggerDocs=swaggerJsDoc(swaggerOptions);
+app.use('/apidocs',swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 
+//Make APIDocs for all routes
+
+/**
+ * @swagger
+ * /:
+ *  get:
+ *    tags: [/]
+ *    summary: Return main page status
+ *    descripion: Use to Get requesst in main-path http://localhost:8080
+ *    responses:
+ *      '200':
+ *        description: This is an Api document for ManhuaWorm Cooking.
+ */
+/**
+ * @swagger
+ * /customers:
+ *  get:
+ *    tags: [customers]
+ *    summary: Fetch a list of all customers
+ *    description: Use to Get request to path /customers
+ *    responses:
+ *      '200':
+ *        description: List of all customers
+ *  post:
+ *    tags: [customers]
+ *    summary: Create a new customer
+ *    description: Use to Post request to path /customers
+ *    responses:
+ *      '201':
+ *        description: Create a customer
+ *  put:
+ *    tags: [customers]
+ *    summary: Update a customer
+ *    description: Use to Put request to path /customers
+ *    responses:
+ *      '200':
+ *        description: Update a customer
+ *  delete:
+ *    tags: [customers]
+ *    summary: Delete a customer
+ *    description: Use to Delete request to path /customers
+ *    responses:
+ *      '200':
+ *        description: Delete a customer
+ * /customers/{customerID}:
+ *  get:
+ *    tags: [customers]
+ *    summary: Fetch a specific customer
+ *    description: Use to Get request to path customers/{customerid}
+ *    parameters:
+ *    - name: customersID
+ *      description: Input the {customersID}
+ *      in: path
+ *      required: true
+ *      type: string
+ *    responses:
+ *      '200':
+ *        description: Display detail of {customerID}
+ *  patch:
+ *    tags: [customers]
+ *    summary: Update a specific customer
+ *    description: Use to Patch request to path customers/{customersID}
+ *    parameters:
+ *      - name: customerID
+ *        description: Input the {customerID}
+ *        in: path
+ *        required: true
+ *        tyoe: string
+ *    responses:
+ *      '200':
+ *        description: Display detail of {customerID} be changed
+ *  delete:
+ *    tags: [customers]
+ *    summary: Delete a specific customer
+ *    description: Use to Delete request to path /customers/{customerID}
+ *    parameters:
+ *      - name: customerID
+ *        desription: Input the {customerID}
+ *        in: path
+ *        required: true
+ *        type: string
+ *    responses:
+ *      '200':
+ *        description: Display announcement that {customerID} be deleted
+ */
 
 app.listen(process.env.PORT || 8080, () =>{
     console.log('Server is running')
