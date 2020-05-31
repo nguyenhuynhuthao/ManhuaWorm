@@ -15,6 +15,10 @@ const methodOverride = require('method-override')
 const indexRouter = require('./routes/index')
 const customerRouter = require('./routes/customers')
 
+// import api doc json
+const swaggerJsDoc=require('swagger-jsdoc');
+const swaggerUi=require('swagger-ui-express');
+
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -41,6 +45,41 @@ db.once('open', () => console.log('Connect to Mongoose'))
 
 app.use('/', indexRouter)
 app.use('/customers', customerRouter)
+
+
+// viết documents
+const swaggerOptions={
+    swaggerDefinition: {
+        info: {
+            title: 'My document',
+            description: "Nguyễn Huỳnh Như Thảo",
+            version: "1.0.0",
+            contact: {
+                name: "Nguyễn Huỳnh Như Thảo",
+                email: "17521064@gm.edu.vn",
+            },
+            servers: ["localhost:8080"]
+        }
+    },
+    apis: ["app.js"]
+  };
+  const swaggerDocs=swaggerJsDoc(swaggerOptions);
+  app.use('/apidocs',swaggerUi.serve,swaggerUi.setup(swaggerDocs));
+  
+  
+  
+  /**
+  * @swagger
+  * /:
+  *  get:
+  *      summary: ...
+  *      description: ...
+  *      produces:
+  *          - application/json
+  *      responses:
+  *          '200': 
+  *              description: ....
+  */
 
 
 app.listen(process.env.PORT || 8080, () =>{
